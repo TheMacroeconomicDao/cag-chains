@@ -1,0 +1,245 @@
+version: '3.8'
+
+services:
+  # ==================== DATABASE ====================
+  
+  postgres:
+    image: postgres:16-alpine
+    container_name: cag-chains-postgres
+    restart: unless-stopped
+    environment:
+      POSTGRES_DB: cag_chains
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-cag_chains_dev}
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+      - ./scripts/init-db.sql:/docker-entrypoint-initdb.d/init-db.sql
+    ports:
+      - "5432:5432"
+    networks:
+      - cag-chains
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+
+  # ==================== CACHE ====================
+  
+  redis:
+    image: redis:7-alpine
+    container_name: cag-chains-redis
+    restart: unless-stopped
+    command: redis-server --appendonly yes --maxmemory 512mb --maxmemory-policy allkeys-lru
+    volumes:
+      - redis_data:/data
+    ports:
+      - "6379:6379"
+    networks:
+      - cag-chains
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+
+  # ==================== IPFS NETWORK ====================
+  
+  ipfs-node:
+    image: ipfs/kubo:v0.24.0
+    container_name: cag-chains-ipfs
+    restart: unless-stopped
+    environment:
+      IPFS_PROFILE: server
+      IPFS_PATH: /data/ipfs
+    volumes:
+      - ipfs_data:/data/ipfs
+      - ipfs_fuse:/ipfs
+      - ipfs_fuse:/ipns
+    ports:
+      - "4001:4001"     # P2P
+      - "5001:5001"     # API
+      - "8080:8080"     # Gateway
+    networks:
+      - cag-chains
+    command: >
+      sh -c "
+        ipfs config --json API.HTTPHeaders.Access-Control-Allow-Origin '[\"*\"]' &&
+        ipfs config --json API.HTTPHeaders.Access-Control-Allow-Methods '[\"PUT\", \"POST\", \"GET\"]' &&
+        ipfs config --json Addresses.Gateway '[\"0.0.0.0:8080\"]' &&
+        ipfs config --json Addresses.API '[\"0.0.0.0:5001\"]' &&
+        ipfs config --json Addresses.Swarm '[\"/ip4/0.0.0.0/tcp/4001\", \"/ip6/::/tcp/4001\"]' &&
+        ipfs daemon --enable-gc
+      "
+    healthcheck:
+      test: ["CMD", "ipfs", "id"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+
+  # ==================== CAG-CHAINS API ====================
+  
+  cag-api:
+    build:
+      context: .
+      dockerfile: apps/api/Dockerfile
+      target: production
+    container_name: cag-chains-api
+    restart: unless-stopped
+    environment:
+      NODE_ENV: production
+      PORT: 3001
+      DATABASE_URL: postgresql://postgres:${POSTGRES_PASSWORD:-cag_chains_dev}@postgres:5432/cag_chains
+      REDIS_URL: redis://redis:6379
+      IPFS_URL: http://ipfs-node:5001
+      PINATA_JWT: ${PINATA_JWT}
+      OPENAI_API_KEY: ${OPENAI_API_KEY}
+    ports:
+      - "3001:3001"
+    networks:
+      - cag-chains
+    depends_on:
+      postgres:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
+      ipfs-node:
+        condition: service_healthy
+    volumes:
+      - api_logs:/app/logs
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:3001/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+
+  # ==================== MONITORING ====================
+  
+  prometheus:
+    image: prom/prometheus:v2.47.0
+    container_name: cag-chains-prometheus
+    restart: unless-stopped
+    command:
+      - '--config.file=/etc/prometheus/prometheus.yml'
+      - '--storage.tsdb.path=/prometheus'
+      - '--web.console.libraries=/etc/prometheus/console_libraries'
+      - '--web.console.templates=/etc/prometheus/consoles'
+      - '--storage.tsdb.retention.time=200h'
+      - '--web.enable-lifecycle'
+    volumes:
+      - ./monitoring/prometheus.yml:/etc/prometheus/prometheus.yml
+      - prometheus_data:/prometheus
+    ports:
+      - "9090:9090"
+    networks:
+      - cag-chains
+    depends_on:
+      - cag-api
+
+  grafana:
+    image: grafana/grafana:10.1.0
+    container_name: cag-chains-grafana
+    restart: unless-stopped
+    environment:
+      GF_SECURITY_ADMIN_USER: ${GRAFANA_USER:-admin}
+      GF_SECURITY_ADMIN_PASSWORD: ${GRAFANA_PASSWORD:-cag_chains_grafana}
+      GF_USERS_ALLOW_SIGN_UP: false
+    volumes:
+      - grafana_data:/var/lib/grafana
+      - ./monitoring/grafana/provisioning:/etc/grafana/provisioning
+      - ./monitoring/grafana/dashboards:/var/lib/grafana/dashboards
+    ports:
+      - "3000:3000"
+    networks:
+      - cag-chains
+    depends_on:
+      - prometheus
+
+  # ==================== DEVELOPMENT TOOLS ====================
+  
+  # Redis Commander for Redis management
+  redis-commander:
+    image: rediscommander/redis-commander:latest
+    container_name: cag-chains-redis-commander
+    restart: unless-stopped
+    environment:
+      REDIS_HOSTS: local:redis:6379
+    ports:
+      - "8081:8081"
+    networks:
+      - cag-chains
+    depends_on:
+      - redis
+    profiles:
+      - dev
+
+  # pgAdmin for PostgreSQL management
+  pgadmin:
+    image: dpage/pgadmin4:7.8
+    container_name: cag-chains-pgadmin
+    restart: unless-stopped
+    environment:
+      PGADMIN_DEFAULT_EMAIL: ${PGADMIN_EMAIL:-admin@cag-chains.com}
+      PGADMIN_DEFAULT_PASSWORD: ${PGADMIN_PASSWORD:-cag_chains_pgadmin}
+    volumes:
+      - pgadmin_data:/var/lib/pgadmin
+    ports:
+      - "5050:80"
+    networks:
+      - cag-chains
+    depends_on:
+      - postgres
+    profiles:
+      - dev
+
+  # ==================== NGINX REVERSE PROXY ====================
+  
+  nginx:
+    image: nginx:alpine
+    container_name: cag-chains-nginx
+    restart: unless-stopped
+    volumes:
+      - ./nginx/nginx.conf:/etc/nginx/nginx.conf
+      - ./nginx/conf.d:/etc/nginx/conf.d
+      - nginx_logs:/var/log/nginx
+    ports:
+      - "80:80"
+      - "443:443"
+    networks:
+      - cag-chains
+    depends_on:
+      - cag-api
+      - grafana
+    profiles:
+      - production
+
+# ==================== VOLUMES ====================
+
+volumes:
+  postgres_data:
+    driver: local
+  redis_data:
+    driver: local
+  ipfs_data:
+    driver: local
+  ipfs_fuse:
+    driver: local
+  prometheus_data:
+    driver: local
+  grafana_data:
+    driver: local
+  pgadmin_data:
+    driver: local
+  api_logs:
+    driver: local
+  nginx_logs:
+    driver: local
+
+# ==================== NETWORKS ====================
+
+networks:
+  cag-chains:
+    driver: bridge
+    ipam:
+      config:
+        - subnet: 172.20.0.0/16 

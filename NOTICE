@@ -1,0 +1,32 @@
+CAG-Chains - World's First AI Component Ecosystem
+Copyright (c) 2024 CAG-Chains Contributors
+
+This software is licensed under the Business Source License 1.1.
+
+LICENSING SUMMARY:
+- ✅ Free for non-production use (development, testing, research)
+- ✅ Free for internal business use
+- ✅ Free to modify and redistribute
+- ❌ Cannot be used to provide competing commercial services
+- ⏰ Automatically becomes MIT License on 2028-12-31
+
+COMPETING USE DEFINITION:
+You may not use this software to provide a commercial service that:
+- Offers AI agent orchestration and chain management
+- Provides AI marketplace for components or contexts
+- Implements distributed AI nodes with IPFS storage
+- Competes with CAG-Chains platform functionality
+
+COMMERCIAL LICENSING:
+For commercial use that would constitute a Competing Use, 
+please contact us for alternative licensing arrangements.
+
+ATTRIBUTION:
+When redistributing, please include this NOTICE file and 
+maintain all copyright notices in the source code.
+
+DEPENDENCIES:
+This software may include components under different licenses.
+See individual package.json files for dependency licenses.
+
+For questions about licensing, contact: [your-email@example.com] 

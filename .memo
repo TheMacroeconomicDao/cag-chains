@@ -1,0 +1,26 @@
+
+стек который мы уже определили для приложения 
+
+можно обновлять и усиливать но только не даунграде
+
+
+Backend Revolution
+Bun 1.1+ - самый быстрый JS runtime
+Hono - сверхбыстрый web framework (заменяет Fastify)
+Drizzle ORM - лучшая performance vs Prisma
+Cloudflare D1 - edge database
+tRPC - end-to-end typesafe APIs
+Zod - runtime validation
+Frontend Next-Gen
+React 19 - с новыми конкурентными фичами
+Next.js 15 - App Router 2.0
+Tailwind CSS 4.0 - новая архитектура
+Shadcn/ui v2 - компоненты
+TanStack Query v5 - server state
+Zustand - client state
+AI & Networking 2025
+OpenAI GPT-5 API - готовимся к релизу
+Vercel AI SDK - лучшие AI abstractions
+libp2p - mature P2P
+WebRTC - direct peer communication
+WASM - для high-performance алгоритмов

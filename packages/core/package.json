@@ -1,0 +1,35 @@
+{
+  "name": "@cag-chains/core",
+  "version": "0.1.0",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js",
+      "require": "./dist/index.js"
+    }
+  },
+  "scripts": {
+    "build": "tsc",
+    "dev": "tsc --watch",
+    "lint": "biome check .",
+    "test": "vitest"
+  },
+  "dependencies": {
+    "@ai-sdk/openai": "^1.3.22",
+    "crypto-js": "^4.2.0",
+    "nanoid": "^5.0.4"
+  },
+  "devDependencies": {
+    "@types/crypto-js": "^4.2.2",
+    "typescript": "^5.3.3",
+    "vitest": "^1.1.0"
+  },
+  "peerDependencies": {
+    "zod": "^3.25.67"
+  },
+  "publishConfig": {
+    "access": "restricted"
+  }
+}

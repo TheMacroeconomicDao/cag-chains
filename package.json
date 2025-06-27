@@ -1,0 +1,59 @@
+{
+  "name": "cag-chains",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "license": "BSL-1.1",
+  "workspaces": [
+    "apps/*",
+    "packages/*"
+  ],
+  "scripts": {
+    "build": "turbo build",
+    "dev": "turbo dev",
+    "dev:api": "cd apps/api && bun run dev",
+    "dev:web": "cd apps/web && bun run dev",
+    "start": "turbo start",
+    "start:api": "cd apps/api && bun start",
+    "lint": "turbo lint",
+    "test": "turbo test",
+    "test:system": "bun scripts/test-system.ts",
+    "test:all": "bun scripts/run-all-tests.ts",
+    "test:guard": "bun test packages/core/src/guard/*.test.ts",
+    "test:visualization": "bun test packages/core/src/visualization/*.test.ts",
+    "test:integration": "bun test tests/integration/*.test.ts",
+    "test:watch": "bun test --watch",
+    "demo": "bun examples/demo.ts",
+    "demo:mvp": "bun run examples/mvp-demo.ts",
+    "demo:a2a": "bun run examples/a2a-demo.ts",
+    "demo:best-practices": "bun run examples/cag-best-practices-demo.ts",
+    "demo:guard": "bun run examples/guard-system-demo.ts",
+    "demo:guard-mock": "bun run examples/guard-mock-demo.ts",
+    "demo:visualization": "bun run examples/visualization-demo.ts",
+    "db:push": "turbo db:push",
+    "db:migrate": "turbo db:migrate",
+    "db:studio": "turbo db:studio",
+    "db:setup": "cd apps/api && bun db:push && echo '✅ Database setup complete'",
+    "clean": "turbo clean",
+    "type-check": "turbo type-check",
+    "format": "biome format --write .",
+    "check": "biome check --write .",
+    "docker:up": "docker-compose up -d",
+    "docker:down": "docker-compose down",
+    "docker:logs": "docker-compose logs -f",
+    "setup": "bun install && bun docker:up && sleep 5 && bun db:setup && echo '🚀 CAG-Chain setup complete!'",
+    "mvp:demo": "echo '🔒 Running Chain Nodes MVP Demo...' && bun demo:mvp",
+    "mvp:api": "echo '🚀 Starting MVP API server...' && bun dev:api",
+    "guard:demo": "echo '🛡️ Running Guard System Demo...' && bun demo:guard"
+  },
+  "devDependencies": {
+    "@biomejs/biome": "^1.6.0",
+    "turbo": "^1.12.0",
+    "typescript": "^5.4.0"
+  },
+  "packageManager": "bun@1.1.0",
+  "engines": {
+    "node": ">=20.0.0",
+    "bun": ">=1.1.0"
+  }
+}

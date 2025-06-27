@@ -1,0 +1,66 @@
+{
+  "name": "@cag-chains/api",
+  "version": "1.0.0",
+  "description": "CAG-Chains API Server - World's First AI Component Ecosystem",
+  "type": "module",
+  "private": true,
+  "scripts": {
+    "dev": "bun --hot src/index.ts",
+    "start": "bun src/index.ts",
+    "build": "bun build src/index.ts --outdir dist --target node",
+    "check": "tsc --noEmit",
+    "lint": "biome check src/",
+    "lint:fix": "biome check --apply src/",
+    "db:generate": "drizzle-kit generate",
+    "db:migrate": "drizzle-kit migrate",
+    "db:studio": "drizzle-kit studio",
+    "test": "bun test",
+    "test:watch": "bun test --watch"
+  },
+  "dependencies": {
+    "@hono/node-server": "^1.12.2",
+    "@hono/swagger-ui": "^0.4.0",
+    "@hono/zod-openapi": "^0.16.0",
+    "ai": "^4.3.16",
+    "drizzle-orm": "^0.33.0",
+    "hono": "^4.6.3",
+    "ioredis": "^5.4.1",
+    "kubo-rpc-client": "^5.2.0",
+    "openai": "^4.63.0",
+    "pg": "^8.12.0",
+    "@qdrant/js-client-rest": "latest",
+    "zod": "^3.23.8"
+  },
+  "devDependencies": {
+    "@biomejs/biome": "^1.9.4",
+    "@types/node": "^22.8.1",
+    "@types/pg": "^8.11.10",
+    "drizzle-kit": "^0.24.2",
+    "typescript": "^5.6.3"
+  },
+  "peerDependencies": {
+    "typescript": "^5.0.0"
+  },
+  "keywords": [
+    "cag-chains",
+    "ai",
+    "blockchain",
+    "ipfs",
+    "agents",
+    "api",
+    "hono",
+    "bun",
+    "typescript"
+  ],
+  "author": "CAG-Chains Team",
+  "license": "BSL-1.1",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/cag-chains/cag-chains.git",
+    "directory": "apps/api"
+  },
+  "bugs": {
+    "url": "https://github.com/cag-chains/cag-chains/issues"
+  },
+  "homepage": "https://cag-chains.com"
+} 
