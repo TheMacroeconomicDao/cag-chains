@@ -8,7 +8,7 @@
   <br>
   
   <!-- Animated Typing Text -->
-  [![Typing SVG](https://readme-typing-svg.demolab.com?font=Fira+Code&size=35&duration=2000&pause=1000&color=00F7FF&center=true&vCenter=true&multiline=true&width=900&height=220&lines=🧠+AI+Component+Ecosystem;🔒+Locked+Chain+Nodes;💰+Tradeable+AI+Expertise;⛓️+Self-Building+Chains;🌐+IPFS+Decentralized+Storage)](https://git.io/typing-svg)
+  [![Typing SVG](https://readme-typing-svg.demolab.com?font=Fira+Code&size=35&duration=2000&pause=1000&color=00F7FF&center=true&vCenter=true&multiline=true&width=900&height=220&lines=🧠+World's+First+AI+Component+Ecosystem;🔒+Revolutionary+Chain+Node+Technology;💰+Trade+AI+Expertise+as+Digital+Assets;⛓️+Self-Building+Autonomous+Chains;🌐+Decentralized+IPFS+Architecture)](https://git.io/typing-svg)
   
 </div>
 
@@ -193,22 +193,22 @@
   <table>
     <tr>
       <td align="center" width="33%">
-        <img src="https://media.giphy.com/media/xTiN0CNHgoRf1Ha7CM/giphy.gif" width="250" height="180" style="border-radius: 15px;" />
+        <img src="https://media.giphy.com/media/3o7abKhOpu0NwenH3O/giphy.gif" width="250" height="180" style="border-radius: 15px;" />
         <h3>🧠 CAG-Nodes & Chain Nodes</h3>
         <p>Individual specialized AI agents that evolve from flexible learning to locked, reusable Chain Node components</p>
         <img src="https://img.shields.io/badge/STATUS-Production%20Ready-brightgreen?style=for-the-badge&logoColor=white&labelColor=1a1a1a" />
       </td>
       <td align="center" width="33%">
-        <img src="https://media.giphy.com/media/l46Cy1rHbQ92uuLXa/giphy.gif" width="250" height="180" style="border-radius: 15px;" />
+        <img src="https://media.giphy.com/media/26tn33aiTi1jkl6H6/giphy.gif" width="250" height="180" style="border-radius: 15px;" />
         <h3>🔮 Oracle & Marketplace</h3>
-        <p>Intelligent planner for chain optimization and trading platform for Chain Nodes as digital assets</p>
-        <img src="https://img.shields.io/badge/FOCUS-AI%20Trading-red?style=for-the-badge&logoColor=white&labelColor=1a1a1a" />
+        <p>AI-powered planning engine with marketplace for trading specialized Chain Node components as digital assets</p>
+        <img src="https://img.shields.io/badge/STATUS-Production%20Ready-brightgreen?style=for-the-badge&logoColor=white&labelColor=1a1a1a" />
       </td>
       <td align="center" width="33%">
-        <img src="https://media.giphy.com/media/3o7qDSOvfaCO9b3MlO/giphy.gif" width="250" height="180" style="border-radius: 15px;" />
+        <img src="https://media.giphy.com/media/l0HlBO7eyXzSZkJri/giphy.gif" width="250" height="180" style="border-radius: 15px;" />
         <h3>🌐 IPFS & P2P Network</h3>
-        <p>Decentralized storage for contexts and peer-to-peer communication between Chain Nodes worldwide</p>
-        <img src="https://img.shields.io/badge/NETWORK-Decentralized-blue?style=for-the-badge&logoColor=white&labelColor=1a1a1a" />
+        <p>Decentralized storage and sharing of AI contexts, training data, and component states across the network</p>
+        <img src="https://img.shields.io/badge/STATUS-Production%20Ready-brightgreen?style=for-the-badge&logoColor=white&labelColor=1a1a1a" />
       </td>
     </tr>
   </table>
@@ -298,7 +298,7 @@
         <br><strong>Redis</strong>
       </td>
       <td align="center">
-        <img src="https://skillicons.dev/icons?i=javascript" width="60" height="60" />
+        <img src="https://cdn.jsdelivr.net/npm/ipfs-logo@0.2.0/ipfs-logo-128-ice.png" width="60" height="60" />
         <br><strong>IPFS (Optional)</strong>
       </td>
     </tr>
