@@ -122,13 +122,13 @@
   <table>
     <tr>
       <td align="center" width="20%">
-        <img src="https://skillicons.dev/icons?i=ai" width="60" height="60" alt="AI Components" />
+        <img src="https://skillicons.dev/icons?i=tensorflow" width="60" height="60" alt="AI Components" />
         <br><br>
         <img src="https://img.shields.io/badge/🧠%20COMPONENTS-∞-brightgreen?style=for-the-badge&logoColor=white&labelColor=1a1a1a" />
         <br><small>Unlimited Chain Nodes</small>
       </td>
       <td align="center" width="20%">
-        <img src="https://skillicons.dev/icons?i=blockchain" width="60" height="60" alt="IPFS Storage" />
+        <img src="https://skillicons.dev/icons?i=javascript" width="60" height="60" />
         <br><br>
         <img src="https://img.shields.io/badge/🌐%20STORAGE-IPFS-blue?style=for-the-badge&logoColor=white&labelColor=1a1a1a" />
         <br><small>Decentralized Contexts</small>
@@ -146,7 +146,7 @@
         <br><small>One-Click Setup</small>
       </td>
       <td align="center" width="20%">
-        <img src="https://skillicons.dev/icons?i=opensource" width="60" height="60" alt="Open Source" />
+        <img src="https://skillicons.dev/icons?i=github" width="60" height="60" alt="Open Source" />
         <br><br>
         <img src="https://img.shields.io/badge/💎%20LICENSE-BSL--1.1-purple?style=for-the-badge&logoColor=white&labelColor=1a1a1a" />
         <br><small>Commercial Protection</small>
@@ -193,19 +193,19 @@
   <table>
     <tr>
       <td align="center" width="33%">
-        <img src="https://media.giphy.com/media/LmNwrBhejkK9EFP504/giphy.gif" width="250" height="180" style="border-radius: 15px;" />
+        <img src="https://media.giphy.com/media/xTiN0CNHgoRf1Ha7CM/giphy.gif" width="250" height="180" style="border-radius: 15px;" />
         <h3>🧠 CAG-Nodes & Chain Nodes</h3>
         <p>Individual specialized AI agents that evolve from flexible learning to locked, reusable Chain Node components</p>
         <img src="https://img.shields.io/badge/STATUS-Production%20Ready-brightgreen?style=for-the-badge&logoColor=white&labelColor=1a1a1a" />
       </td>
       <td align="center" width="33%">
-        <img src="https://media0.giphy.com/media/v1.Y2lkPTc5MGI3NjExd3Z3OGI5Y3Q5eTRibGx6N3BnbjZua2t0ZjdoM2p6N2F1MzJxM2FreiZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/dVuyBgq2z5gVBkFtDc/giphy.gif" width="250" height="180" style="border-radius: 15px;" />
+        <img src="https://media.giphy.com/media/l46Cy1rHbQ92uuLXa/giphy.gif" width="250" height="180" style="border-radius: 15px;" />
         <h3>🔮 Oracle & Marketplace</h3>
         <p>Intelligent planner for chain optimization and trading platform for Chain Nodes as digital assets</p>
         <img src="https://img.shields.io/badge/FOCUS-AI%20Trading-red?style=for-the-badge&logoColor=white&labelColor=1a1a1a" />
       </td>
       <td align="center" width="33%">
-        <img src="https://media.giphy.com/media/d8iPm91TeShX4kHG69/giphy-downsized-large.gif" width="250" height="180" style="border-radius: 15px;" />
+        <img src="https://media.giphy.com/media/3o7qDSOvfaCO9b3MlO/giphy.gif" width="250" height="180" style="border-radius: 15px;" />
         <h3>🌐 IPFS & P2P Network</h3>
         <p>Decentralized storage for contexts and peer-to-peer communication between Chain Nodes worldwide</p>
         <img src="https://img.shields.io/badge/NETWORK-Decentralized-blue?style=for-the-badge&logoColor=white&labelColor=1a1a1a" />
@@ -234,17 +234,17 @@
       </td>
       <td align="center" width="20%">
         <h4>🧠 AI & ML Stack</h4>
-        <img src="https://skillicons.dev/icons?i=openai,tensorflow,pytorch,jupyter&theme=dark" />
+        <img src="https://skillicons.dev/icons?i=tensorflow,pytorch,python,jupyter&theme=dark" />
         <p><small>GPT-4o • Vercel AI SDK • Zod</small></p>
       </td>
       <td align="center" width="20%">
         <h4>🌐 Decentralized Infrastructure</h4>
-        <img src="https://skillicons.dev/icons?i=ipfs,blockchain,solidity,web3&theme=dark" />
+        <img src="https://skillicons.dev/icons?i=solidity,ethereum,javascript,html&theme=dark" />
         <p><small>IPFS • Kubo • js-ipfs • Pinata</small></p>
       </td>
       <td align="center" width="20%">
         <h4>🗄️ Database & Caching</h4>
-        <img src="https://skillicons.dev/icons?i=postgresql,redis,drizzle&theme=dark" />
+        <img src="https://skillicons.dev/icons?i=postgresql,redis,mysql,nodejs&theme=dark" />
         <p><small>PostgreSQL • Redis • Drizzle ORM</small></p>
       </td>
       <td align="center" width="20%">
@@ -298,7 +298,7 @@
         <br><strong>Redis</strong>
       </td>
       <td align="center">
-        <img src="https://skillicons.dev/icons?i=ipfs" width="60" height="60" />
+        <img src="https://skillicons.dev/icons?i=javascript" width="60" height="60" />
         <br><strong>IPFS (Optional)</strong>
       </td>
     </tr>
@@ -864,7 +864,7 @@ cag-chains/
         <br><small>AI SDK Framework</small>
       </td>
       <td align="center" width="20%">
-        <img src="https://skillicons.dev/icons?i=ipfs" width="60" height="60" />
+        <img src="https://skillicons.dev/icons?i=javascript" width="60" height="60" />
         <br><strong>IPFS</strong>
         <br><small>Decentralized Future</small>
       </td>
