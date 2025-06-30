@@ -3,7 +3,7 @@ import { eq, desc, and, ilike } from 'drizzle-orm'
 import { db } from '../db/client.js'
 import { cagNodes, type CAGNode, type NewCAGNode } from '../db/schema.js'
 import { RedisService } from '../services/redis.js'
-import { CAGNode as CAGNodeClass } from '@cag-chains/core/node/CAGNode'
+import { CAGNode as CAGNodeClass } from '../../../../packages/core/src/node/CAGNode.js'
 import { IPFSService } from '../services/ipfs.js'
 
 const redis = RedisService.getInstance()

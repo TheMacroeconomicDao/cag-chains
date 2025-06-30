@@ -1,5 +1,5 @@
 import { OpenAPIHono, createRoute, z } from '@hono/zod-openapi'
-import { Oracle } from '@cag-chains/core/oracle/Oracle'
+import { Oracle } from '../../../../packages/core/src/oracle/Oracle.js'
 import { RedisService } from '../services/redis.js'
 
 export const oracleRouter = new OpenAPIHono()

@@ -145,7 +145,7 @@ Return only valid JSON.`
 
     try {
       const { text } = await generateText({
-        model: openai('gpt-4'),
+        model: openai('gpt-4o-mini'),
         prompt: analysisPrompt,
         maxTokens: 2000,
         temperature: 0.3
@@ -507,7 +507,7 @@ Return only valid JSON.`
       const planningPrompt = this.buildChainPlanningPrompt(taskAnalysis, availableNodes)
       
       const { text } = await generateText({
-        model: openai('gpt-4'),
+        model: openai('gpt-4o-mini'),
         prompt: planningPrompt,
         maxTokens: 3000,
         temperature: 0.2

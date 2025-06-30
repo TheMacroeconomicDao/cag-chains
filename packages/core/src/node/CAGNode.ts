@@ -317,7 +317,7 @@ Requirements:
 - Target 70% of original length`
 
       const { text } = await generateText({
-        model: openai('gpt-4'),
+        model: openai('gpt-4o-mini'),
         prompt: compressionPrompt,
         maxTokens: Math.floor(this.state.contextWindow.maxTokens * 0.3),
         temperature: 0.3
@@ -412,14 +412,15 @@ Requirements:
 
   private selectModel(complexity: number): string {
     // Choose model based on node type and task complexity
+    // Using gpt-4o-mini for all cases as it's free and performant
     if (complexity >= 8 || this.state.nodeType === 'xlarge') {
-      return 'gpt-4-turbo-preview'
+      return 'gpt-4o-mini'
     } else if (complexity >= 6 || this.state.nodeType === 'large') {
-      return 'gpt-4'
+      return 'gpt-4o-mini'
     } else if (complexity >= 4 || this.state.nodeType === 'medium') {
-      return 'gpt-3.5-turbo'
+      return 'gpt-4o-mini'
     } else {
-      return 'gpt-3.5-turbo'
+      return 'gpt-4o-mini'
     }
   }
 

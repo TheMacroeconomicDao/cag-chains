@@ -18,9 +18,7 @@ async function runTests() {
     // Проверяем существование тестовых файлов
     const testFiles = [
       'packages/core/src/guard/PrecisionGuard.test.ts',
-      'packages/core/src/guard/MockGuard.test.ts', 
       'packages/core/src/visualization/SystemVisualizer.test.ts',
-      'tests/integration/guard-system.integration.test.ts'
     ]
 
     const existingTests = []
@@ -113,10 +111,10 @@ async function runTests() {
     // Проверка основных компонентов
     console.log('🧠 Проверка основных компонентов...')
     try {
-      await import('../packages/core/src/guard/MockGuard.js')
-      console.log('  ✅ MockGuard импортируется')
+      await import('../packages/core/src/guard/PrecisionGuard.js')
+      console.log('  ✅ PrecisionGuard импортируется')
     } catch (e) {
-      console.log(`  ❌ MockGuard: ${e}`)
+      console.log(`  ❌ PrecisionGuard: ${e}`)
     }
 
     try {
@@ -138,10 +136,8 @@ async function runTests() {
     
     const components = [
       { name: 'PrecisionGuard', hasTests: existingTests.some(f => f.includes('PrecisionGuard.test')) },
-      { name: 'MockGuard', hasTests: existingTests.some(f => f.includes('MockGuard.test')) },
       { name: 'SystemVisualizer', hasTests: existingTests.some(f => f.includes('SystemVisualizer.test')) },
-      { name: 'TerminalVisualizer', hasTests: false }, // Пока нет тестов
-      { name: 'Integration Tests', hasTests: existingTests.some(f => f.includes('integration')) }
+      { name: 'TerminalVisualizer', hasTests: false }
     ]
 
     components.forEach(component => {

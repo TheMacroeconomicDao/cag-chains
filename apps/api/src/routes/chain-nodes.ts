@@ -1,5 +1,5 @@
 import { OpenAPIHono, createRoute, z } from '@hono/zod-openapi'
-import { CAGNode, ChainNode, QualityController } from '@cag-chains/core/node'
+import { CAGNode, ChainNode, QualityController } from '../../../../packages/core/src/node/index.js'
 import { RedisService } from '../services/redis.js'
 
 export const chainNodesRouter = new OpenAPIHono()

@@ -144,7 +144,7 @@ export class PrecisionGuard {
     const maxCompetence = Math.max(...Object.values(competenceMap))
 
     // Безопасное получение доменов из requirements
-    const taskDomains = Array.isArray(task.requirements) ? task.requirements : []
+    const taskDomains = task.requirements?.domains || []
     
     return `
 Ты Guard для ЗАБЛОКИРОВАННОЙ экспертной AI ноды. 
@@ -214,7 +214,7 @@ ID: ${this.header.nodeId}
    * Быстрая проверка совместимости без AI (для оптимизации)
    */
   quickCompatibilityCheck(task: Task): { compatible: boolean; confidence: number; reason: string } {
-    const requiredDomains = task.requirements.domains
+    const requiredDomains = task.requirements?.domains || []
     const nodeDomains = this.header.expertDomains
     
     // Проверка доменов
@@ -235,17 +235,18 @@ ID: ${this.header.nodeId}
     
     // Проверка сложности
     const maxNodeComplexity = Math.max(...Object.values(this.header.competenceMap)) * 10
-    if (task.requirements.complexity > maxNodeComplexity) {
+    const taskComplexity = task.requirements?.complexity || 1
+    if (taskComplexity > maxNodeComplexity) {
       return {
         compatible: false,
         confidence: 0,
-        reason: `Task complexity ${task.requirements.complexity} > node capability ${maxNodeComplexity.toFixed(1)}`
+        reason: `Task complexity ${taskComplexity} > node capability ${maxNodeComplexity.toFixed(1)}`
       }
     }
     
     // Расчет уверенности
     const domainCoverage = domainMatches.length / requiredDomains.length
-    const complexityFit = 1 - (task.requirements.complexity / maxNodeComplexity)
+    const complexityFit = 1 - (taskComplexity / maxNodeComplexity)
     const confidence = (domainCoverage * 0.7) + (complexityFit * 0.3)
     
     return {
